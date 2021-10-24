@@ -1,19 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>测试</title>
+	<style type="text/css">
+	#mainDiv{
+	        width:560.5px;
+	        height:50px;
+	        border:5px dashed #ffff00;
+	        text-align:center;
+	      }
+	#title{
+		margin-top: 10px;
+		color: blueviolet;
+		font-size: 20px;
+	}
+	
+	#secondDiv{
+			margin-top: 10px;
+			margin-bottom: 10px;
+	        width:560.5px;
+	        height:100px;
+	        border:5px double #00ffff;
+	        text-align:center;
+	      }
+		  
+	</style>
 </head>
 <body>
+	<div id="mainDiv">
+	      <h4 id='title'>网页编程作业第一次测试</h4>
+	    </div>
+	<div id="secondDiv">
+	      <h4 id='title_2'>媒工组员：岑林泽 郑鑫茂</h4>
+		  <h4 id='title_3'>设院组员：吴幸桦 陶晓兰</h4>
+	    </div>
     <script src="js/pixi.min.js"></script>
     <script>
-		var app = new PIXI.Application(500,350);
+		
+		var app = new PIXI.Application(570.5,327);
         document.body.appendChild(app.view);
         
         var bg = new PIXI.Sprite.fromImage("res/bg.png");
+		bg.scale.x=0.5;
+		bg.scale.y=0.5;
         app.stage.addChild(bg);
+		
+		var bbl = new PIXI.Sprite.fromImage("res/bbl.png");
+		bbl.scale.x=0.1;
+		bbl.scale.y=0.1;
+		bbl.anchor.set(0.5,0.5);
+		bbl.x=420;
+		bbl.y=250;
+		app.stage.addChild(bbl);
+		
+		var fx1 = new PIXI.Sprite.fromImage("res/fx1.png");
+		fx1.scale.x=0.4;
+		fx1.scale.y=0.4;
+		fx1.x=100;
+		fx1.y=200;
+		app.stage.addChild(fx1);
+		fx1.interactive=true;
+		fx1.on("click",Top);
+		
+		var fx2 = new PIXI.Sprite.fromImage("res/fx1.png");
+		fx2.scale.x=0.4;
+		fx2.scale.y=-0.4;
+		fx2.x=100;
+		fx2.y=270;
+		app.stage.addChild(fx2);
+		fx2.interactive=true;
+		fx2.on("click",Bottom);
+		
+		var fx3 = new PIXI.Sprite.fromImage("res/fx2.png");
+		fx3.scale.x=0.4;
+		fx3.scale.y=0.4;
+		fx3.x=65;
+		fx3.y=235;
+		app.stage.addChild(fx3);
+		fx3.interactive=true;
+		fx3.on("click",Left);
+		
+		var fx4 = new PIXI.Sprite.fromImage("res/fx2.png");
+		fx4.scale.x=-0.4;
+		fx4.scale.y=0.4;
+		fx4.x=170;
+		fx4.y=235;
+		app.stage.addChild(fx4);
+		fx4.interactive=true;
+		fx4.on("click",Right);
+		
+		function Top(){
+			bbl.y-=3;
+
+		}
+		
+		function Bottom(){
+			bbl.y+=3;
+		}
+		
+		function Left(){
+			bbl.x-=3;
+		}
+		
+		function Right(){
+			bbl.x+=3;
+		}
     </script>
 </body>
 </html>
