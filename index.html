@@ -161,14 +161,15 @@
 		
 		
 		function display_1_off(){
-			app.stage.removeChild(info_1);
-			app.stage.removeChild(info_2);
+			
 			app.stage.removeChild(X);
 			app.stage.removeChild(save);
 			app.stage.removeChild(button_1_off);
 			app.stage.removeChild(button_1_on);
 			app.stage.removeChild(button_2_off);
 			app.stage.removeChild(button_2_on);
+			app.stage.removeChild(info_1);
+			app.stage.removeChild(info_2);
 			
 			var bg_new = new PIXI.Sprite.fromImage("res/bg.png");
 			app.stage.addChild(bg_new);
