@@ -27,6 +27,9 @@
 		wenwu_1.y=750;
 		app.stage.addChild(wenwu_1)
 		
+		var hand = new PIXI.Sprite.fromImage("res/hand.png")
+		hand.x=300;
+		hand.y=800;
 		
 		var stock =  new PIXI.Sprite.fromImage("res/stock.png");
 		stock.scale.set(0.75,0.75);
@@ -123,6 +126,7 @@
 				flag_2++;
 				bg.visible=false;
 				app.stage.removeChild(black);
+				app.stage.addChild(hand);
 				bg_temp.alpha=1;
 			}
 			
@@ -168,6 +172,7 @@
 			
 			var bg_new = new PIXI.Sprite.fromImage("res/bg.png");
 			app.stage.addChild(bg_new);
+			app.stage.addChild(stock);
 
 		}
 		
