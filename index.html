@@ -20,6 +20,8 @@
 		bg.on("click",tips)
 		
 		
+		
+		
 		var wenwu_1 =  new PIXI.Sprite.fromImage("res/wenwu_1.png");
 		wenwu_1.anchor.set(0.5,0.5);
 		wenwu_1.scale.set(0.45,0.45);
@@ -28,8 +30,10 @@
 		app.stage.addChild(wenwu_1)
 		
 		var hand = new PIXI.Sprite.fromImage("res/hand.png")
-		hand.x=300;
-		hand.y=800;
+		hand.scale.set(0.6,0.6);
+		hand.x=340;
+		hand.y=805;
+		hand.alpha=0;
 		
 		var stock =  new PIXI.Sprite.fromImage("res/stock.png");
 		stock.scale.set(0.75,0.75);
@@ -41,6 +45,20 @@
 		var bg_temp =  new PIXI.Sprite.fromImage("res/bg_temp.png");
 		bg_temp.alpha=0;
 		app.stage.addChild(bg_temp);
+		
+		var text_1 = new PIXI.Sprite.fromImage("res/text_1.png")
+		text_1.scale.set(0.42,0.42);
+		text_1.x=410;
+		text_1.y=790;
+		text_1.alpha=0;
+		app.stage.addChild(text_1)
+		
+		var text_2 = new PIXI.Sprite.fromImage("res/text_2.png")
+		text_2.scale.set(0.8,0.8);
+		text_2.x=630;
+		text_2.y=700;
+		text_2.alpha=0;
+		app.stage.addChild(text_2)
 		
 		
 		var black = new PIXI.Sprite.fromImage("res/black.png");
@@ -57,7 +75,7 @@
 		info_2.y=100;
 		info_2.alpha=0;
 		
-		
+		app.stage.addChild(hand);
 		
 		
 		var X = new PIXI.Sprite.fromImage("res/X.png");
@@ -126,11 +144,43 @@
 				flag_2++;
 				bg.visible=false;
 				app.stage.removeChild(black);
-				app.stage.addChild(hand);
+				
 				bg_temp.alpha=1;
 			}
 			
 		}
+		
+		var flag_text_1=0;
+
+		
+		function animate_text(){
+			if(flag_2==2){
+				if(text_2.alpha<=1){
+					text_2.alpha+=0.02;
+				}
+				if(text_2.alpha>=1&&text_1.alpha<=1)
+				{
+					text_1.alpha+=0.02;
+				}
+				
+				
+				if(flag_text_1==0){
+					hand.alpha+=1;
+					if(hand.alpha>=1){
+						flag_text_1=1;
+					}
+				}
+				
+				if(flag_text_1==1){
+					hand.alpha-=0.1;
+					if(hand.alpha<=0){
+						flag_text_1=0;
+					}
+				}
+			}
+		}
+		
+		
 		
 		function tips(){
 			
@@ -139,7 +189,7 @@
 				flag_bg++;
 				wenwu_1.interactive=true;
 				wenwu_1.on("click",display_1);
-				
+				app.ticker.add(animate_text);
 				
 
 			}
